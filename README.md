@@ -29,13 +29,13 @@ The project demonstrates CRUD (Create, Read, Update, Delete) operations for a `H
 1. Clone the repository:
 
 ```
-git clone <repository-url>
+git clone https://github.com/Goodnessuc/rusting-actix-diesel.git
 ```
 
 2. Navigate to the project directory:
 
 ```
-cd <project-name>
+cd rusting-actix-diesel
 ```
 
 3. Run migrations to setup the database:
@@ -99,4 +99,4 @@ Feel free to fork the project, make some updates, and submit pull requests.
 ## 📄 License
 
 This project is licensed under the MIT License.
-# rusting-actix-diesel
+
