@@ -1,0 +1,25 @@
+
+
+
+# Ignore typical Rust artifacts
+/target
+**/*.rs.bk
+
+# Ignore version control directories
+.git
+.gitignore
+
+# Ignore temporary files
+**/*.swp
+**/*.swo
+**/*~
+
+# Ignore all log files
+*.log
+
+# Ignore database files
+*.db
+*.sqlite
+
+# Ignore environment configuration files
+.env
