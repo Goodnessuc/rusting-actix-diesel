@@ -1,21 +1,14 @@
-# Stage 1: Build
-FROM rust:1.56-alpine as builder
-
+# Use Rust Nightly as the base image
+FROM rustlang/rust:nightly
 
 # Install SQLite3 and required dependencies
-# Adding libsqlite3 to ensure the SQLite library is available
-RUN apk add --no-cache sqlite sqlite-dev
+RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev
 
-
-
-
+# Set the working directory inside the container
 WORKDIR /usr/src/myapp
 
-
-
+# Copy the current directory contents into the container
 COPY . .
-
-
 
 # Install Diesel CLI with SQLite feature
 RUN cargo install diesel_cli --no-default-features --features sqlite
@@ -26,14 +19,8 @@ RUN diesel migration run
 # Build the application
 RUN cargo build --release
 
-# Stage 2: Production
-FROM alpine:latest
-
-WORKDIR /root/
-COPY --from=builder /usr/src/myapp/target/release/myapp .
-
 # Expose port 8080
 EXPOSE 8080
 
 # Define the command to run the application
-CMD ["./myapp"]
+CMD ["./target/release/myapp"]
