@@ -16,14 +16,13 @@ RUN cargo install diesel_cli --no-default-features --features sqlite
 
 RUN touch .env && echo DATABASE_URL=database.db > .env
 
-
 # Run migrations
 RUN diesel migration run
 
 # Build the application
 RUN cargo build --release
 
-# Expose port 8000
+# Expose port 8080
 EXPOSE 8080
 
 # Define the command to run the application
