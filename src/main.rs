@@ -11,6 +11,7 @@ use crate::handlers::{create_human, delete_human, get_humans, update_human};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    println!("This server is up");
     HttpServer::new(|| {
         App::new()
             .route("/human", web::post().to(create_human))
@@ -18,7 +19,7 @@ async fn main() -> std::io::Result<()> {
             .route("/human/{id}", web::put().to(update_human))
             .route("/human/{id}", web::delete().to(delete_human))
     })
-        .bind("127.0.0.1:8080")?
+        .bind("0.0.0.0:8080")?
         .run()
         .await
 }

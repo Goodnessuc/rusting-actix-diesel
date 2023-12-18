@@ -13,14 +13,18 @@ COPY . .
 # Install Diesel CLI with SQLite feature
 RUN cargo install diesel_cli --no-default-features --features sqlite
 
+
+RUN touch .env && echo DATABASE_URL=database.db > .env
+
+
 # Run migrations
 RUN diesel migration run
 
 # Build the application
 RUN cargo build --release
 
-# Expose port 8080
+# Expose port 8000
 EXPOSE 8080
 
 # Define the command to run the application
-CMD ["./target/release/myapp"]
+CMD ["./target/release/rusting-actix-diesel"]
